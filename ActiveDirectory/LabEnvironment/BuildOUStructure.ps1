@@ -1,15 +1,20 @@
 #########################################################################################
 # Disclaimer: 
-#     I did not write 95%+ of this script, I copied & tweaked SwifOnSecurity's OrgKit:
+#     I did not write 90%+ of this script, I copied & tweaked SwifOnSecurity's OrgKit:
 #     https://github.com/SwiftOnSecurity/OrgKit
 #
-# Overview: Creates the base of a heavily federated & tiered AD structure 
+# Overview: Creates the base of a heavily federated & tiered AD structure.
+#      
+# Improvements/Modifications:
+#      I added some loops to improve the Tier OU creation steps because the original script
+#      was way too redundant for my specific use-case of a federated environment, so it was
+#      a bit cleaner for me this way
 # 
 ########################################################################################
 
 <# GENERAL HIERARCHY
 \Departments
-----\Department A
+----\Department A + B + C (3 mirrored setups)
 --------\Users
 ------------\Employees
 ----------------\Branch A
@@ -26,10 +31,6 @@
 ------------\Branch B
 ------------\Branch C
 ------------\Test Workstations
---------\PAW
-------------\Tier0
-------------\Tier1
-------------\Tier2
 --------\Servers
 ------------\Tier0
 ------------\Tier1
@@ -82,7 +83,6 @@ foreach ($department in $departments){
     $OUDescription = ""
     OrgKit-CreateOU
 
-    
     # Users: DOMAIN\Departments\Department <X>\Users
     $OUName = "Users"
     $OUPath = $DepartmentPath
@@ -144,20 +144,6 @@ foreach ($department in $departments){
         $OUPath = "OU=Workstations," + $DepartmentPath
         $OUDescription = ""
         OrgKit-CreateOU
-    
-
-    # PAW: DOMAIN\Departments\Department <X>\PAW
-    $OUName = "PAW"
-    $OUPath = $DepartmentPath
-    $OUDescription = ""
-    OrgKit-CreateOU
-        # Tiers: DOMAIN\Departments\Department <X>\PAW\Tier<X>
-        Foreach($tier in $tiers){
-                $OUName = $tier
-                $OUPath = "OU=PAW," + $DepartmentPath
-                $OUDescription = ""
-                OrgKit-CreateOU
-            }
 
     # Servers: DOMAIN\Departments\Department <X>\Servers
     $OUName = "Servers"
