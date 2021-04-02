@@ -3,6 +3,7 @@
 # Future Improvements: Move away from XML dependency, find fun payloads, and turn into a one-liner
 #-------------------------------------------------------------------------------------------------
 
+# Apparently there is a limit to how far down you can go before it starts generating vague errors 
 $Song = "\Never\Gonna\Give\You\Up\Never\Gonna\Let\You\Down\Never\Gonna\Run\Around\And\Desert\You\Never\Gonna\Make\You\Cry\Never\Gonna\Say\Goodbye\Never\Gonna\TellALieAndHurtYou"
 
 # Create a nested folder and scheduled task for each lyric
