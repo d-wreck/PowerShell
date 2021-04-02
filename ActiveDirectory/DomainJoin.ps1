@@ -1,4 +1,10 @@
-# Instructions: Execute the script on a computer and respond to the prompts 
+#############################################################################################
+# Overview: 
+#         This script will rename & join a computer to a specified Active Directory domain
+# Instructions: 
+#           Customize the domain + ou section the script, then execute it on a computer. 
+#           Respond to the prompts to enter credentials and computer name.
+#############################################################################################
 
 ###START DO NOT MODIFY#####
 # FORCE SELF-ELEVATION TO RUN AS ADMINISTRATOR
