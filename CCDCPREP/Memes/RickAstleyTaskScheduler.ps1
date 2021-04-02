@@ -9,7 +9,7 @@ $Song = "\Never\Gonna\Give\You\Up\Never\Gonna\Let\You\Down\Never\Gonna\Run\Aroun
 for($i=1; $i -lt 30; $i++ ){
     $currentpath = ($song.split("\")[0..$i]) -join "\"
     $name = $currentpath.Split("\")[-1] 
-    Register-ScheduledTask -Xml (get-content '.\boop.xml' | out-string) -TaskName "$name" -TaskPath "$currentpath"
+    Register-ScheduledTask -Xml (get-content '.\rickastley.xml' | out-string) -TaskName "$name" -TaskPath "$currentpath"
 }
 
 ######################
